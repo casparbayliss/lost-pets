@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "The Pet Finder ", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Show pets", pets_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Dogs</a>
+          <a class="dropdown-item" href="#">Cats</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "I have lost a pet", lost_animal_prompt_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "I have found a lost pet", found_animal_prompt_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col">
+      <div class="add-pet-form">
+        <%= form_for(@dog, :url => {:controller => "dogs", :action => "create"}) do |f| %>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <%= f.label :status, 'Lost', class: "btn btn-primary active" %>
+            <%= f.radio_button :status, 'lost', :checked => true, id: "option1", autocomplete: "off" %>
+            <%= f.label :status, 'Found', class: "btn btn-primary" %>
+            <%= f.radio_button :status, 'recovered', id: "option2", autocomplete: "off" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, class: "control-label" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description , class: "control-label" %>
+            <%= f.text_field :description, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :age, class: "control-label" %>
+            <%= f.number_field :age, class: "form-control" %>
+          </div>
+
+          <%= f.submit "Add this lost dog", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <%= image_tag("lost-pet-what-to-do.jpg", id: "lost-pet-drawing", alt: "Lost pet") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- look at this if I want to rework it to my original idea of a Jquery: https://stackoverflow.com/questions/17424130/how-to-make-radio-button-checked-by-default-based-on-different-user-role -->

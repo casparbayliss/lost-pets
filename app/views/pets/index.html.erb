@@ -1,0 +1,142 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "The Pet Finder ", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Show pets", pets_path, class: "nav-link" %><span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Dogs</a>
+          <a class="dropdown-item" href="#">Cats</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <%= link_to "I have lost a pet", new_pet_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "I have found a lost pet", new_pet_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col pets-col" id="lost-pets-row">
+      <h2>Lost pets</h2>
+      <div class="container">
+        <div class="row">
+          <% @dogs.each do |pet| %>
+            <% if pet.status == "lost" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("dog.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% @cats.each do |pet| %>
+            <% if pet.status == "lost" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("cat.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col pets-col" id="found-pets-row">
+      <h2>Found pets</h2>
+      <div class="container">
+        <div class="row">
+          <% @dogs.each do |pet| %>
+            <% if pet.status == "recovered" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("dog.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% @cats.each do |pet| %>
+            <% if pet.status == "recovered" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("cat.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col pets-col" id="found-pets-row">
+      <h2>Reunited pets</h2>
+      <div class="container">
+        <div class="row">
+          <% @dogs.each do |pet| %>
+            <% if pet.status == "found" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("dog.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% @cats.each do |pet| %>
+            <% if pet.status == "found" %>
+              <div class="col">
+                <div class="card" style="width: 12rem;">
+                  <%= image_tag("cat.jpg", class: "card-img-top") %>
+                  <div class="card-body">
+                    <p class="card-text"><%= pet.name %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to "Home", root_path %>
+
+<!-- Once I have done the routing etc I am going to use this article
+  https://stackoverflow.com/questions/36094710/combining-two-different-activerecord-collections-into-one -->
+

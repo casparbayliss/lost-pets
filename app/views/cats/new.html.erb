@@ -1,0 +1,22 @@
+<h1>Add a cat</h1>
+
+
+<%= form_for(@cat) do |f| %>
+  <p>This is a cat that I have: </p>
+
+  <%= f.label :status, 'Lost' %>
+  <%= f.radio_button :status, 'lost' %>
+  <%= f.label :status, 'Found' %>
+  <%= f.radio_button :status, 'recovered' %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+
+  <%= f.submit %>
+<% end %>

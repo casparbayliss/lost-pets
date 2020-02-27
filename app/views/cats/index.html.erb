@@ -1,0 +1,13 @@
+<h1>See all Cats</h1>
+
+<% @cats.each do |cat| %>
+  <li>
+    <%= link_to cat.name, cat %>
+    <%= cat.description %>
+    <%= cat.age %>
+  </li>
+<% end %>
+
+<%= link_to "Add a new cat", new_cat_path %>
+
+<%= link_to "Home", root_path %>
